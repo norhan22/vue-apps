@@ -1,4 +1,12 @@
-# hello-world
+# Vuw 2 Hello Wold Project 
+
+- vue 2
+- babel 
+- router
+- vuex
+- eslint
+- pug
+- axios
 
 ## Project setup
 ```
