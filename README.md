@@ -1,4 +1,4 @@
-# Vuw 2 Hello Wold Project 
+# Vue 2 Hello Wold Project 
 
 - vue 2
 - babel 
