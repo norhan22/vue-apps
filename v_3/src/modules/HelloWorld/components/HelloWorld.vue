@@ -44,15 +44,18 @@
       </li>
       <li>
         <a
-          href="https://www.npmjs.com/package/vue-cli-plugin-pug"
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest"
           target="_blank"
           rel="noopener"
-          >pug</a
+          >unit-jest</a
         >
       </li>
       <li>
-        <a href="https://github.com/axios/axios" target="_blank" rel="noopener"
-          >axios</a
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-cypress"
+          target="_blank"
+          rel="noopener"
+          >e2e-cypress</a
         >
       </li>
     </ul>
@@ -121,6 +124,11 @@ export default {
   props: {
     msg: String,
   },
+  computed: {
+    hasError() {
+      return this.msg.length > 5;
+    },
+  },
 };
 </script>
 
@@ -129,14 +137,17 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
