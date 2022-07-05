@@ -1,4 +1,4 @@
-button {
+button, label {
   text-transform: capitalize;
 }
 
@@ -7,5 +7,5 @@ input {
 }
 
 .error {
-  border-color: red;
+  color: red
 }

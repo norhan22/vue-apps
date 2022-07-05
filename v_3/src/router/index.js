@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import authRoutes from "@/modules/auth/auth.routes";
 
 const routes = [
   {
@@ -11,11 +12,7 @@ const routes = [
     name: "about",
     component: () => import("../modules/HelloWorld/views/AboutView.vue"),
   },
-  {
-    path: "/login",
-    name: "login",
-    component: () => import("../modules/auth/LoginForm.vue"),
-  },
+  ...authRoutes,
 ];
 
 const router = createRouter({

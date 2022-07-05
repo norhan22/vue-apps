@@ -1,8 +1,8 @@
 import { shallowMount } from "@vue/test-utils";
 
-import loginForm from "@/modules/auth/LoginForm";
+import loginForm from "@/modules/auth/views/login";
 
-describe("LoginForm.vue", () => {
+describe("login.vue", () => {
   /////////////////////
   // Function
   ///////////////////
@@ -10,6 +10,7 @@ describe("LoginForm.vue", () => {
     test(`email: ${data.email} and password :${data.password} showError : ${showError}`, () => {
       const wrapper = shallowMount(loginForm);
       wrapper.setData(data);
+      console.log(`${Object.values(data).join(",")}`, wrapper.find(".error"));
       expect(wrapper.find(".error").exists()).toBe(showError);
     });
   };
