@@ -5,7 +5,7 @@ export default [
     component: () => import("@/modules/auth/views/login.vue"),
   },
   {
-    path: "/signup",
+    path: "/",
     name: "signup",
     component: () => import("@/modules/auth/views/signup.vue"),
   },

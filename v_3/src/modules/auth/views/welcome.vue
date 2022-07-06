@@ -1,12 +1,6 @@
 <template>
   <div>
-    <div class="message">
-      {{ message }}
-    </div>
-    Enter your username: <input v-model="username" />
-    <div v-if="error" class="error">
-      Please enter a username with at least seven letters.
-    </div>
+    <h1 class="message">Welcome {{ authData.username }}</h1>
   </div>
 </template>
 
@@ -17,14 +11,9 @@ export default {
   data() {
     return {
       message: "Welcome to the Vue.js cookbook",
-      username: "",
     };
   },
 
-  computed: {
-    error() {
-      return this.username.trim().length < 7;
-    },
-  },
+  computed: {},
 };
 </script>

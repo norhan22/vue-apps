@@ -1,11 +1,32 @@
+form {
+  text-align: left;
+  width: 50%;
+  margin: auto;
+}
+
 button, label {
   text-transform: capitalize;
 }
 
-input {
-  border-color: #ccc;
+label {
+  display: block;
+
 }
 
-.error {
-  color: red
+input {
+  border: 1px solid #ccc;
+  width: 100%;
+  border-radius: 3px;
+  padding: 7px;
+
+  &.error {
+    border-color: indianred;
+  }
+}
+
+span.error {
+  color: red;
+  display: block;
+  font-size: smaller;
+  margin-top: 2px;
 }
