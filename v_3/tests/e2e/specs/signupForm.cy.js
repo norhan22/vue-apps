@@ -13,7 +13,7 @@ describe("Test Signup app", () => {
       const setValue = (selector, value) => {
         if (value) cy.get(selector).type(value).should("have.value", value);
         else {
-          cy.get("button[type='submit']").click();
+          cy.get("button").click();
           cy.get(".error");
         }
       };
