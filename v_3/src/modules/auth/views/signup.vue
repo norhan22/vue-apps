@@ -1,11 +1,10 @@
 <template>
-  <form @submit.prevent="submit" method="get">
+  <form @submit.prevent="startSave" method="get">
     <div class="mb-1">
       <label for="username"> Username </label>
       <input
-        v-model="username"
+        v-model.trim="username"
         name="username"
-        required
         :class="{ error: inValidName }"
       />
       <span v-if="inValidName" class="error">
@@ -17,19 +16,23 @@
       <input
         type="email"
         v-model="email"
-        required
         name="email"
         :class="{ error: inValidEmail }"
       />
       <span v-if="inValidEmail" class="error">Email is invalid</span>
     </div>
-    <!--    <div class="mb-1">-->
-    <!--      <label for="password"> password </label>-->
-    <!--      <input type="password" v-model="password" required />-->
-    <!--      <span v-if="inValidPass" class="error">Please enter a password</span>-->
-    <!--    </div>-->
+    <div class="mb-1">
+      <label for="password"> password </label>
+      <input type="password" v-model="password" name="password" />
+      <span v-if="inValidPass" class="error">Please enter a password</span>
+    </div>
+    <div class="mb-1">
+      <label for="confirmPassword"> confirm password </label>
+      <input type="password" v-model="confirmPassword" name="confirmPassword" />
+      <span v-if="inValidPass" class="error">the password not matched</span>
+    </div>
     <div>
-      <button type="submit" class="mr-1">Save</button>
+      <button @click="startSave" class="mr-1">Save</button>
       <!--      <button @click="goTo('login')">Login</button>-->
     </div>
   </form>
@@ -43,23 +46,45 @@ export default {
       username: "",
       email: "",
       password: "",
+      confirmPassword: "",
+      startSubmit: false,
     };
   },
   computed: {
     inValidEmail() {
-      return this.email.length && !this.email.includes("@");
+      return (
+        this.startSubmit &&
+        (!this.email.length ||
+          !this.email.includes("@") ||
+          !this.email.includes("."))
+      );
     },
     inValidName() {
-      return this.username.length && this.username.trim().length < 7;
+      return (
+        this.startSubmit &&
+        (!this.username.length || this.username.trim().length < 7)
+      );
     },
     inValidPass() {
-      return !this.password.length;
+      return (
+        (this.startSubmit &&
+          (!this.password.length || !this.confirmPassword.length)) ||
+        this.confirmPassword !== this.password
+      );
+    },
+    isValid() {
+      return !this.inValidName && !this.inValidEmail && !this.inValidPass;
     },
     authData() {
       return { username: this.username, email: this.email };
     },
   },
   methods: {
+    startSave() {
+      this.startSubmit = true;
+      if (!this.isValid) return;
+      this.submit();
+    },
     submit() {
       this.setData();
       this.goTo("welcome");
