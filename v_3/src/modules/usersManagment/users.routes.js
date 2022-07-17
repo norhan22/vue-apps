@@ -11,7 +11,7 @@ export default [
     component: () => import(`@/${resource}/userForm`),
   },
   {
-    path: "/",
+    path: "",
     name: "allUsers",
     component: () => import(`@/${resource}/list`),
   },

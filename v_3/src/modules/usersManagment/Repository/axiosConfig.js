@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-  baseUrl: "https://dummyapi.io/data/v1/",
+  baseURL: "https://dummyapi.io/data/v1/",
   headers: {
-    "app-id": "0JyYiOQXQQr5H9OEn21312",
+    "app-id": "62d2cbf63d3b7134f1f89d2e",
   },
 });

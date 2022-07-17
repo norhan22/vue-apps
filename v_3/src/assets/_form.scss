@@ -30,3 +30,31 @@ span.error {
   font-size: smaller;
   margin-top: 2px;
 }
+
+button {
+  padding: 4px 17px;
+  transition: all .5s;
+  border: 1px solid #bebebe;
+  outline: 0;
+  border-radius: 4px;
+  margin-top: 10px;
+
+  &.loading::after {
+    content: "";
+    width: 11px;
+    height: 10px;
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid black;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    margin: 0 6px;
+    animation: loading 1s infinite;
+    @keyframes loading {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
