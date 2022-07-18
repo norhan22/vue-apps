@@ -37,7 +37,14 @@
     </div>
 
     <div>
-      <button @click="startSave" class="mr-1" :class="{loading:loading}" :disabled="loading">Save</button>
+      <button
+          @click="startSave"
+          class="mr-1"
+          :class="{ loading: loading }"
+          :disabled="loading"
+      >
+        {{ userId ? 'update' : 'save' }}
+      </button>
       <span class="error" v-if="apiError">{{ apiError }}</span>
     </div>
   </form>
@@ -55,7 +62,7 @@ export default {
       email: "",
       startSubmit: false,
       loading: false,
-      apiError: ''
+      apiError: "",
     };
   },
   computed: {
@@ -100,40 +107,46 @@ export default {
     // APIs
     //////////////////////
     catchError(err) {
-      this.apiError = Object.values(err.response.data.data).join("\n")
+      this.apiError = Object.values(err.response.data.data).join("\n");
     },
     show() {
-      this.loading = true
-      repository.getUser(this.userId)
+      this.loading = true;
+      repository
+          .getUser(this.userId)
           .then((res) => {
-            console.log(res);
+            this.firstName = res.data.firstName
+            this.lastName = res.data.lastName
+            this.email = res.data.email
+
           })
           .catch(this.catchError)
           .finally(() => {
-            this.loading = false
-          })
+            this.loading = false;
+          });
     },
     create() {
-      this.loading = true
-      repository.createUser(this.authData)
+      this.loading = true;
+      repository
+          .createUser(this.authData)
           .then(() => {
             this.goTo("allUsers");
           })
           .catch(this.catchError)
           .finally(() => {
-            this.loading = false
-          })
+            this.loading = false;
+          });
     },
     update() {
-      this.loading = true
-      repository.updateuser(this.userId, this.authData)
+      this.loading = true;
+      repository
+          .updateuser(this.userId, this.authData)
           .then(() => {
             this.goTo("allUsers");
           })
           .catch(this.catchError)
           .finally(() => {
-            this.loading = false
-          })
+            this.loading = false;
+          });
     },
     ///////////////////////////
     startSave() {

@@ -14,4 +14,7 @@ export default {
   updateuser(id, payload) {
     return axios.put(`${resource}/${id}`, payload);
   },
+  deleteUser(id) {
+    return axios.delete(`${resource}/${id}`);
+  },
 };
