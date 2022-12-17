@@ -6,7 +6,7 @@
     |
     <router-link to="/users">Users Management</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 
 <style lang="scss">
